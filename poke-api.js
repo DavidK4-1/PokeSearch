@@ -13,7 +13,7 @@ function pokeBlock(res, div) {
         }
     document.getElementById("pokemon-species").appendChild(div);
 }
-
+//kirlia
 async function userGetPokemonByName(namePk) {
     let ret = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${namePk}/`).catch((err) => console.error(err));
     return ret.json();
@@ -33,19 +33,24 @@ async function getPokemonAndRelations(namePk) {// :(
         .then((ref) => {
             pokeBlock(unravPk, div)
             for (const stage of ref.chain.evolves_to) { // stage.evolves_to[0].species.name
-                if (unravPk.name !== stage.species.name ) {
-                    if (stage !== ref.chain.evolves_to[ref.chain.evolves_to.length-1]
-                        && unravPk.name !== ref.chain.species.name)
-                        continue;
+                if (!ref.chain.evolves_to.find(ele =>  ele.species.name === unravPk.name)) {
+                    //if (unravPk.name !== stage.species.name) 
+                        //continue;
+                    //if (stage !== ref.chain.evolves_to[0]
+                        //&& unravPk.name !== ref.chain.species.name)
+                    
                     div.innerHTML += "<button class=\"txt\">" + stage.species.name + "</button>";
                 } else {// ? prob put ref.chain.evolves_to.length > 1
                         // ! recursive func
                         //TODO
                     div.innerHTML += "<button class=\"txt\">" + ref.chain.species.name + "</button>";
                     if (stage.evolves_to[0])
-                        div.innerHTML += "<button class=\"txt\">" + stage.evolves_to[0].species.name + "</button>";
+                        for (const evo of stage.evolves_to)
+                            div.innerHTML += "<button class=\"txt\">" + evo.species.name + "</button>";
+                    return;
                 }
             }
+            console.log(ref.chain.evolves_to.find(ele => {console.log(ele);ele.species.name === unravPk.name}));
         })
         .catch((err) => console.error(err));
         document.getElementById("pokemon-species").appendChild(div);
