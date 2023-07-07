@@ -1,0 +1,69 @@
+body{
+    background-color: rgba(0,255,0,.1);
+    font-family:'Courier New', Courier, monospace;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+button{
+    background-color: #c1f3b765;
+    border-radius: 5px;
+}
+
+#name{
+    padding: .25em;
+    width: 30%;
+}
+
+#pokemon-species{
+    display: inline-block;
+}
+
+#pokemon-species div{
+    display: flex; 
+    background-color: aquamarine;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    height: 150px;
+    min-width: 711px;
+    max-width: 48%;
+    float: left;
+}
+
+#pokemon-species h2{
+    font-size: 25px;
+    width: 70px;
+    margin-bottom: auto;
+    border-bottom: 1px dotted black;
+}
+
+#pokemon-species p{
+    position: relative;
+    top: 50px;
+    min-width: 300px;
+    right: 3rem;
+}
+
+.txt{
+    position: relative; 
+    float: right;
+    top: 120px;
+    width: 120px;
+    height: 30px;
+    overflow: auto;
+}
+
+#pokemon-species button:first-of-type{
+    background-color: lightyellow;
+}
+
+#pokemon-species button:hover, button:hover{
+    background-color: lightblue;
+}
