@@ -34,11 +34,11 @@ async function getPokemonAndRelations(namePk) {// :(
             pokeBlock(unravPk, div)
             for (const stage of ref.chain.evolves_to) { // stage.evolves_to[0].species.name
                 if (unravPk.name !== stage.species.name ) {
-                    if ((stage !== ref.chain.evolves_to[ref.chain.evolves_to.length]
-                        && unravPk.name !== ref.chain.species.name) ^ !stage.evolves_to[0])
+                    if (stage !== ref.chain.evolves_to[ref.chain.evolves_to.length-1]
+                        && unravPk.name !== ref.chain.species.name)
                         continue;
                     div.innerHTML += "<button class=\"txt\">" + stage.species.name + "</button>";
-                } else {// ?? prob put ref.chain.evolves_to.length > 1
+                } else {// ? prob put ref.chain.evolves_to.length > 1
                         // ! recursive func
                         //TODO
                     div.innerHTML += "<button class=\"txt\">" + ref.chain.species.name + "</button>";
